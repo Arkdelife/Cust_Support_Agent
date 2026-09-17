@@ -1,0 +1,12 @@
+# Streamlit Community Cloud installs from this file, not pyproject.toml / uv.lock.
+# Keep it in sync with pyproject.toml by hand until the deploy is scripted.
+claude-agent-sdk>=0.2.128
+python-dotenv>=1.0.0
+streamlit>=1.38.0
+
+# Airtable client -- the code-side ticket-write path in shopfast_airtable.py.
+# Migrated 13 Sep 2026 (see docs/MIGRATION_GOOGLE_TO_AIRTABLE.md).
+pyairtable>=2.3.0
+
+# google-api-python-client / google-auth removed: nothing imports them any more.
+# shopfast_tickets.py (Google Sheets writes) is kept in the repo, deprecated.

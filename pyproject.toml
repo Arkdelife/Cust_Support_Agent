@@ -1,0 +1,18 @@
+[project]
+name = "shopfast-support-agent"
+version = "0.1.0"
+description = "ShopFast customer-support resolution agent -- CCA-F architecture patterns, built on the Claude Agent SDK with real hooks."
+requires-python = ">=3.11"
+dependencies = [
+    "claude-agent-sdk>=0.2.128",
+    "python-dotenv>=1.0.0",
+    # Writing escalations into the Tickets table. The MODEL never gets a write tool --
+    # it reads Airtable through an external, read-only MCP server (airtable-mcp-server,
+    # launched via npx). This is the code-side write path in shopfast_airtable.py, so a
+    # ticket cannot be forgotten. Migrated 13 Sep 2026, see
+    # docs/MIGRATION_GOOGLE_TO_AIRTABLE.md.
+    "pyairtable>=2.3.0",
+    # google-api-python-client / google-auth removed here: shopfast_tickets.py (the
+    # Google Sheets write path it served) is kept in the repo, deprecated, but nothing
+    # imports it any more. Re-add both if you ever roll back to the Sheets build.
+]
